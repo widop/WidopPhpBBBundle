@@ -1,0 +1,12 @@
+parameters:
+    widop_php_bb.user_manager.class: Widop\PhpBBBundle\Model\UserManager
+    widop_php_bb.authentication_manager.class: Widop\PhpBBBundle\Model\AuthenticationManager
+
+services:
+    widop_php_bb.user_manager:
+        class: %widop_php_bb.user_manager.class%
+        arguments: [ %widop_php_bb.path% ]
+
+    widop_php_bb.authentication_manager:
+        class: %widop_php_bb.authentication_manager.class%
+        arguments: [ %widop_php_bb.path% ]
