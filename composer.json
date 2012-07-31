@@ -1,0 +1,20 @@
+{
+    "name": "widop/phpbb-bundle",
+    "description": "Provides a PhpBB integration for your Symfony2 project.",
+    "keywords": [ "phpbb" ],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Widop",
+            "email": "contact@widop.com"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "2.*"
+    },
+    "autoload": {
+        "psr-0": { "Widop\\PhpBBBundle": "" }
+    },
+    "target-dir": "Widop/PhpBBBundle"
+}
