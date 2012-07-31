@@ -11,7 +11,8 @@
         }
     ],
     "require": {
-        "symfony/framework-bundle": "2.*"
+        "symfony/framework-bundle": "2.*",
+        "widop/phpbb3": "dev-master"
     },
     "autoload": {
         "psr-0": { "Widop\\PhpBBBundle": "" }
