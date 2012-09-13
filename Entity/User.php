@@ -17,6 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PhpBB User.
  *
  * @ORM\Entity
+ * @ORM\Table(name = "phpbb_user")
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
