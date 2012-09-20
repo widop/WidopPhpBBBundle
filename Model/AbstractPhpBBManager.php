@@ -28,6 +28,11 @@ abstract class AbstractPhpBBManager
     static protected $isInitialized = false;
 
     /**
+     * @var
+     */
+    private $phpbbPath;
+
+    /**
      * PhpBB user manager constructor.
      *
      * @param string $phpBBPath The PhpBB path.
@@ -38,15 +43,13 @@ abstract class AbstractPhpBBManager
             throw new Exception(sprintf('The PhpBB path is not valid: %s', $phpBBPath));
         }
 
-        $this->initPhpBB($phpBBPath);
+        $this->phpbbPath = $phpBBPath;
     }
 
     /**
      * Initializes PhpBB core.
-     *
-     * @param string $phpBBPath The PhpBB path.
      */
-    protected function initPhpBB($phpBBPath)
+    protected function initPhpBB()
     {
         if (!self::$isInitialized) {
             global $phpbb_root_path, $phpEx, $db, $cache, $config, $user, $auth;
@@ -55,7 +58,7 @@ abstract class AbstractPhpBBManager
                 define('IN_PHPBB', true);
             }
 
-            $phpbb_root_path = $phpBBPath.'/';
+            $phpbb_root_path = $this->phpbbPath.'/';
             $phpEx = substr(strrchr(__FILE__, '.'), 1);
 
             require_once $phpbb_root_path.'common.'.$phpEx;

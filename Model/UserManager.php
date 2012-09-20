@@ -31,6 +31,8 @@ class UserManager extends AbstractPhpBBManager
      */
     public function addUser($username, $password, $email, $group, $type)
     {
+        $this->initPhpBB();
+
         $errorReporting = error_reporting(E_ALL - E_NOTICE);
 
         $userRow = array(
@@ -55,6 +57,8 @@ class UserManager extends AbstractPhpBBManager
      */
     public function updateUser($username, $newPassword, $newEmail)
     {
+        $this->initPhpBB();
+
         global $db;
 
         $sql = 'UPDATE '.USERS_TABLE.' '.
@@ -72,6 +76,8 @@ class UserManager extends AbstractPhpBBManager
      */
     public function removeUser($username)
     {
+        $this->initPhpBB();
+
         user_delete('remove', $this->getUserId($username));
     }
 
@@ -84,6 +90,8 @@ class UserManager extends AbstractPhpBBManager
      */
     public function getUserId($username)
     {
+        $this->initPhpBB();
+
         $userIds = array();
         $userNames = array($username);
 
@@ -105,6 +113,8 @@ class UserManager extends AbstractPhpBBManager
      */
     public function encodePassword($plainPassword)
     {
+        $this->initPhpBB();
+
         return phpbb_hash($plainPassword);
     }
 }

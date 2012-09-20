@@ -26,6 +26,8 @@ class AuthenticationManager extends AbstractPhpBBManager
      */
     public function login($username, $password, $rememberMe = false)
     {
+        $this->initPhpBB();
+
         global $user, $auth;
 
         $user->session_begin();
@@ -37,6 +39,8 @@ class AuthenticationManager extends AbstractPhpBBManager
      */
     public function logout()
     {
+        $this->initPhpBB();
+
         global $user;
 
         $user->session_kill();
