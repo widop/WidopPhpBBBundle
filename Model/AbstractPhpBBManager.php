@@ -13,6 +13,8 @@ namespace Widop\PhpBBBundle\Model;
 
 use \Exception;
 
+use Symfony\Component\HttpKernel\Kernel;
+
 /**
  * Abstract PhpBB manager which allows to easily init PhpBB core.
  *
@@ -28,22 +30,28 @@ abstract class AbstractPhpBBManager
     static protected $isInitialized = false;
 
     /**
-     * @var
+     * @var string The php bb path (in config)
      */
     private $phpbbPath;
+
+    /**
+     * @var \Symfony\Component\HttpKernel\Kernel The current kernel.
+     */
+    private $kernel;
 
     /**
      * PhpBB user manager constructor.
      *
      * @param string $phpBBPath The PhpBB path.
      */
-    public function __construct($phpBBPath)
+    public function __construct($phpBBPath, Kernel $kernel)
     {
         if (!is_dir($phpBBPath)) {
             throw new Exception(sprintf('The PhpBB path is not valid: %s', $phpBBPath));
         }
 
         $this->phpbbPath = $phpBBPath;
+        $this->kernel = $kernel;
     }
 
     /**
@@ -52,7 +60,9 @@ abstract class AbstractPhpBBManager
     protected function initPhpBB()
     {
         if (!self::$isInitialized) {
-            global $phpbb_root_path, $phpEx, $db, $cache, $config, $user, $auth;
+            global $phpbb_root_path, $phpEx, $db, $cache, $config, $user, $auth, $kernel;
+
+            $kernel = $this->kernel;
 
             if (!defined('IN_PHPBB')) {
                 define('IN_PHPBB', true);
