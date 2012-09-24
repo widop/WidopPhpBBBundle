@@ -5,8 +5,8 @@ parameters:
 services:
     widop_php_bb.user_manager:
         class: %widop_php_bb.user_manager.class%
-        arguments: [ %widop_php_bb.path% ]
+        arguments: [ %widop_php_bb.path%, @kernel ]
 
     widop_php_bb.authentication_manager:
         class: %widop_php_bb.authentication_manager.class%
-        arguments: [ %widop_php_bb.path% ]
+        arguments: [ %widop_php_bb.path%, @kernel ]
