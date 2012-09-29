@@ -92,7 +92,7 @@ public function registerBundles()
 }
 ```
 
-### Make phpbb accessible
+## Make phpbb accessible
 
 Create a symlink in your web directory:
 
