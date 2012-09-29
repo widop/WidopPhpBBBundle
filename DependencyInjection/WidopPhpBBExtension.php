@@ -36,6 +36,7 @@ class WidopPhpBBExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $container->setParameter('widop_php_bb.path', $config['path']);
+        $container->setParameter('widop_php_bb.web_path', $config['web_path']);
 
         $loader->load('services.yml');
     }

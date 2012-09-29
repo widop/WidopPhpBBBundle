@@ -31,7 +31,11 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('path')->isRequired()->end()
+                // Absolute path to the phpBB root dir
+                ->scalarNode('path')->isRequired()->end()     
+
+                // Relative path to the phpBB dir. Relative from /web. Used to generate Urls
+                ->scalarNode('web_path')->isRequired()->end() 
             ->end();
 
         return $treeBuilder;
