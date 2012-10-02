@@ -32,12 +32,12 @@ abstract class AbstractPhpBBManager
     /**
      * @var string The php bb path (in config)
      */
-    private $phpbbPath;
+    protected $phpbbPath;
 
     /**
      * @var \Symfony\Component\HttpKernel\Kernel The current kernel.
      */
-    private $kernel;
+    protected $kernel;
 
     /**
      * PhpBB user manager constructor.
