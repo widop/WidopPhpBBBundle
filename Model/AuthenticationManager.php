@@ -31,7 +31,9 @@ class AuthenticationManager extends AbstractPhpBBManager
         global $user, $auth;
 
         $user->session_begin();
+        define('SUCCESSFUL_SF_LOGIN', true);
         $auth->login($username, $password, $rememberMe);
+        define('SUCCESSFUL_SF_LOGIN', false);
     }
 
     /**
