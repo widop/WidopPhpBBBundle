@@ -9,9 +9,11 @@ In order to use the bundle, first, you need to configure it.
 
 widop_php_bb:
     path: %kernel.root_dir%/../vendor/widop/phpbb3
+    web_path: /forum
 ```
 
-The configuration is pretty simple... You just need to set the phpbb root path.
+The configuration is pretty simple, you just need to set the phpbb absolute `path`, and its 
+`web_path` path. The `web_path` is where you symlinked it in you `/web` directory.
 
 ## Usage
 
