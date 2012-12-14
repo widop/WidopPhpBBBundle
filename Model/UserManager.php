@@ -117,4 +117,27 @@ class UserManager extends AbstractPhpBBManager
 
         return phpbb_hash($plainPassword);
     }
+
+    /**
+     * Gets the number of unread private message for a given user.
+     *
+     * @param string $username The user.
+     *
+     * @return int
+     */
+    public function getUnreadPrivateMessageCount($username)
+    {
+        $this->initPhpBB();
+
+        global $db;
+
+        $sql = 'SELECT u.`user_unread_privmsg` AS count ' .
+            'FROM '.USERS_TABLE.' u ' .
+            'WHERE user_id = \''.$this->getUserId($username).'\'';
+
+        $result = $db->sql_query($sql);
+        $row = $db->sql_fetchrow($result);
+
+        return $row['count'];
+    }
 }
