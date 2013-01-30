@@ -86,7 +86,11 @@ For all new users, you'll create from your app. For example, a new admin:
 
 ```
 $phpbbuserman = $kernel->getContainer()->get('widop_php_bb.user_manager');
-$phpbbuserman->addUser('symfony2_username', 'password_as_stored_in_symfony2', 'email@email.com', 5, 3);
+// Here 5 and 3 are "owner" (phpbb admin) type.
+$userGroup = 5; 
+$userType = 3;
+$phpbbuserman->addUser('sf2_username', 'hashed_password_from_sf2_user', 
+    'email@email.com', $userGroup, $userType);
 ```
 
 ## PhpBB Configuration
