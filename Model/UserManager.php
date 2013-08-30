@@ -73,12 +73,13 @@ class UserManager extends AbstractPhpBBManager
      * Removes a PhpBB user.
      *
      * @param string $username The user name.
+     * @param string $mode     The deletion mode (remove|retain).
      */
-    public function removeUser($username)
+    public function removeUser($username, $mode = 'remove')
     {
         $this->initPhpBB();
 
-        user_delete('remove', $this->getUserId($username));
+        user_delete($mode, $this->getUserId($username));
     }
 
     /**
